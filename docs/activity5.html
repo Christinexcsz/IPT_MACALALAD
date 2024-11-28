@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Dark Mode & Add Numbers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background-color: #ffffff;
+      color: #1b1b1b;
+    }
+
+    body.dark-mode {
+      background-color: #1b1b1b;
+      color: #a3c4f3;
+    }
+
+    .container {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+      background-color: #f8e2e7;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light-mode .container {
+      background-color: #f8e2e7;
+      color: #1b1b1b;
+    }
+
+    body.dark-mode .container {
+      background-color: #333333;
+      color: #a3c4f3;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 1.5em;
+      color: #ff6699;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      width: 80px;
+      margin: 5px;
+      border: 2px solid #a3c4f3;
+      border-radius: 5px;
+      font-size: 1em;
+      color: #333;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+
+    .plus-sign {
+      font-size: 24px;
+      color: #1b1b1b;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .add-btn {
+      background-color: #6699ff;
+      color: #fff;
+    }
+
+    .add-btn:hover {
+      background-color: #557acc;
+    }
+
+    .toggle-btn {
+      background-color: #ff6699;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+    .toggle-btn:hover {
+      background-color: #cc5278;
+    }
+
+    #result-box {
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: 2px solid #a3c4f3;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode #result-box {
+      background-color: #444;
+      color: #a3c4f3;
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <div class="container">
+    <h2>Add Two Numbers</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <span class="plus-sign">+</span>
+    <input type="number" id="num2" placeholder="Enter second number">
+    <button class="add-btn" onclick="addNumbers()">Add</button>
+
+    <div id="result-box">Result: </div>
+
+    <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+  <script>
+    function addNumbers() {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      const result = num1 + num2;
+      document.getElementById('result-box').textContent = `Result: ${result}`;
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+</body>
+</html>
